@@ -10,27 +10,27 @@ def minOperations(n):
     '''
     if not isinstance(n, int):
         return 0
-    ops_count = 0
+    count = 0
     clipboard = 0
-    done = 1
+    start = 1
     # print('H', end='')
-    while done < n:
+    while start < n:
         if clipboard == 0:
             # init (the first copy all and paste)
-            clipboard = done
-            done += clipboard
-            ops_count += 2
-            # print('-(11)->{}'.format('H' * done), end='')
-        elif n - done > 0 and (n - done) % done == 0:
+            clipboard = start
+            start += clipboard
+            count += 2
+            # print('-(11)->{}'.format('H' * start), end='')
+        elif n - start > 0 and (n - start) % start == 0:
             # copy all and paste
-            clipboard = done
-            done += clipboard
-            ops_count += 2
-            # print('-(11)->{}'.format('H' * done), end='')
+            clipboard = start
+            start += clipboard
+            count += 2
+            # print('-(11)->{}'.format('H' * start), end='')
         elif clipboard > 0:
             # paste
-            done += clipboard
-            ops_count += 1
-            # print('-(01)->{}'.format('H' * done), end='')
+            start += clipboard
+            count += 1
+            # print('-(01)->{}'.format('H' * start), end='')
     # print('')
-    return ops_count
+    return count
